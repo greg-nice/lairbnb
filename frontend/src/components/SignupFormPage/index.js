@@ -11,7 +11,7 @@ const SignupFormPage = () => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassoword, setConfirmPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/" />;
@@ -19,7 +19,7 @@ const SignupFormPage = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if (password === confirmPassoword) {
+        if (password === confirmPassword) {
 
             setErrors([]);
             const formInfo = {
@@ -45,20 +45,20 @@ const SignupFormPage = () => {
                 {errors.map((error, i) => <li key={i}>{error}</li>)}
             </ul>
             <label>
-                Email
-                <input
-                    type="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
                 Username
                 <input
                     type="text"
                     value={username}
                     onChange={e => setUsername(e.target.value)}
+                    required
+                />
+            </label>
+            <label>
+                Email
+                <input
+                    type="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     required
                 />
             </label>
@@ -71,6 +71,16 @@ const SignupFormPage = () => {
                     required
                 />
             </label>
+            <label>
+                Confirm Password
+                <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={e => setConfirmPassword(e.target.value)}
+                    required
+                />
+            </label>
+
             <button>Sign Up</button>
         </form>
     );

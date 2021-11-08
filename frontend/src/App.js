@@ -17,7 +17,7 @@ function App() {
   return isLoaded && (
   // return (
     <>
-      <Navigation />
+      <Navigation isLoaded={isLoaded}/>
       <Switch>
         <Route exact path="/">
           <h1>Hello from Home Page</h1>
