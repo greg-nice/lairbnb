@@ -63,5 +63,4 @@ const LoginFormPage = () => {
     );
 }
 
-//test
 export default LoginFormPage;
