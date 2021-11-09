@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { loginUser } from '../../store/session';
+import Footer from '../Footer/index'
 import './LoginForm.css';
 
 const LoginFormPage = () => {
@@ -36,30 +37,33 @@ const LoginFormPage = () => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <ul>
-                {errors.map((error, i) => <li key={i}>{error}</li>)}
-            </ul>
-            <label>
-                Username or Email
-                <input
-                    type='text'
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Password
-                <input
-                    type='password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button>Log In</button>
-        </form>
+        <>
+            <form onSubmit={onSubmit}>
+                <ul>
+                    {errors.map((error, i) => <li key={i}>{error}</li>)}
+                </ul>
+                <label>
+                    Username or Email
+                    <input
+                        type='text'
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Password
+                    <input
+                        type='password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </label>
+                <button>Log In</button>
+            </form>
+            <Footer />
+        </>
     );
 }
 

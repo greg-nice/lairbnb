@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
-const { Spot } = require('../../db/models');
+const { Spot, User } = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
 
@@ -11,13 +11,15 @@ const router = express.Router();
 //Read
 router.get("/", asyncHandler(async (req, res) => {
     const spots = await Spot.findAll({
+        include: User,
         limit: 10,
     })
-    return res.json({ spots });
+    return res.json(spots);
 }));
 
 //Create
 // router.post("/");
+//TODO: complete validation code below:
 const validateSpot = [
     check('address')
         .exists({ checkFalsy: true })
@@ -55,8 +57,9 @@ router.post("/", requireAuth, validateSpot, asyncHandler(async (req, res) => {
         name,
         price,
     });
+    await spot.save();
 
-    return res.json();
+    return res.json({ spot });
 }))
 
 // //Update
@@ -95,13 +98,20 @@ router.put("/:id", requireAuth, validateSpot, asyncHandler(async (req, res) => {
 
 // //Delete
 // router.delete("/:id")
+// router.delete("/:id", requireAuth, asyncHandler(async (req, res) => {
 router.delete("/:id", requireAuth, asyncHandler(async (req, res) => {
     const spotId = req.params.id;
     const spot = await Spot.findByPk(spotId);
+
+    // if (res.locals.user.id !== spot.userId) {
+    //     const err = new Error("Not Authorized");
+    //     err.status = 401;
+    //     throw err;
+    // }
+
+    const destroyedSpotName = spot.name;
     spot.destroy();
+    return res.json({ message: `successfully deleted ${destroyedSpotName}` });
 }));
-
-
-
 
 module.exports = router;
