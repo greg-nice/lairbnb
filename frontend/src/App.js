@@ -6,6 +6,7 @@ import LoginFormPage from './components/LoginFormPage';
 import * as sessionActions from './store/session';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
+import SplashPage from './components/SplashPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function App() {
       <Navigation isLoaded={isLoaded}/>
       <Switch>
         <Route exact path="/">
-          <h1>Hello from Home Page</h1>
+          <SplashPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />
