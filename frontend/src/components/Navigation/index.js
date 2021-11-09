@@ -16,15 +16,19 @@ function Navigation ({ isLoaded }) {
     } else {
         sessionLinks = (
             <>
-                <NavLink to="/login">Log In</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
+                <div>
+                    <NavLink to="/login">Log In</NavLink>
+                    <NavLink to="/signup">Sign Up</NavLink>
+                </div>
             </>
         );
     }
 
     return (
         <>
-            <NavLink exact to="/">Home</NavLink>
+            <div>
+                <NavLink exact to="/">Home</NavLink>
+            </div>
             {isLoaded && sessionLinks}
         </>
     );
