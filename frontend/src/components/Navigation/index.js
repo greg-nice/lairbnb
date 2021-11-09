@@ -16,7 +16,7 @@ function Navigation ({ isLoaded }) {
     } else {
         sessionLinks = (
             <>
-                <div>
+                <div className='nav-auth-buttons'>
                     <NavLink to="/login">Log In</NavLink>
                     <NavLink to="/signup">Sign Up</NavLink>
                 </div>
@@ -25,12 +25,14 @@ function Navigation ({ isLoaded }) {
     }
 
     return (
-        <>
-            <div>
-                <NavLink exact to="/">Home</NavLink>
+        <nav className='nav-container'>
+            <div className='nav-home-button-container'>
+                <div className='nav-home-button'>
+                    <NavLink exact to="/">Home</NavLink>
+                </div>
             </div>
             {isLoaded && sessionLinks}
-        </>
+        </nav>
     );
 }
 
