@@ -2,3 +2,7 @@ main {
     margin: 0 24px;
     min-height: 40rem;
 }
+
+.splash-main {
+    margin-bottom: 40px;
+}

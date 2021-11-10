@@ -44,7 +44,7 @@ const SignupFormPage = () => {
         <>
             <div className="form-wrapper">
                 <form className="form-style" onSubmit={onSubmit}>
-                    <ul className='form-errers'>
+                    <ul className='form-errors'>
                         {errors.map((error, i) => <li key={i}>{error}</li>)}
                     </ul>
                     <label className="form-button">
@@ -83,7 +83,6 @@ const SignupFormPage = () => {
                             required
                         />
                     </label>
-
                     <button className="form-button">Sign Up</button>
                 </form>
             </div>

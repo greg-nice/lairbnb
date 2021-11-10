@@ -2,12 +2,15 @@ import { Switch, Route } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 
+import './index.css';
 import LoginFormPage from './components/LoginFormPage';
 import * as sessionActions from './store/session';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import SplashPage from './components/SplashPage';
-import './index.css';
+import CreateLairFormPage from './components/CreateLairFormPage';
+import ShowOneLairPage from './components/ShowOneLairPage';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -27,8 +30,14 @@ function App() {
         <Route path="/login">
           <LoginFormPage />
         </Route>
-        <Route>
-          <SignupFormPage path="/signup"/>
+        <Route path="/signup">
+          <SignupFormPage />
+        </Route>
+        <Route path="/spots/new">
+          <CreateLairFormPage />
+        </Route>
+        <Route path="/spots/:spotId">
+          <ShowOneLairPage />
         </Route>
       </Switch>
     </>

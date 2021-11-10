@@ -8,7 +8,7 @@ const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
 
-//Read
+//Get all spots
 router.get("/", asyncHandler(async (req, res) => {
     const spots = await Spot.findAll({
         include: User,
@@ -17,7 +17,15 @@ router.get("/", asyncHandler(async (req, res) => {
     return res.json(spots);
 }));
 
-//Create
+//Get one spot
+router.get("/:id", asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const spot = await Spot.findByPk(id);
+
+    return res.json(spot);
+}))
+
+//Create spot
 // router.post("/");
 //TODO: complete validation code below:
 const validateSpot = [
@@ -62,7 +70,7 @@ router.post("/", requireAuth, validateSpot, asyncHandler(async (req, res) => {
     return res.json({ spot });
 }))
 
-// //Update
+// //Update spot
 // router.put("/:id")
 router.put("/:id", requireAuth, validateSpot, asyncHandler(async (req, res) => {
     const spotId = req.params.id;
