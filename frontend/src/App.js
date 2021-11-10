@@ -7,6 +7,7 @@ import * as sessionActions from './store/session';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import SplashPage from './components/SplashPage';
+import './index.css';
 
 function App() {
   const dispatch = useDispatch();
