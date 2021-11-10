@@ -28,7 +28,7 @@ function Navigation ({ isLoaded }) {
         <nav className='nav-container'>
             <div className='nav-home-button-container'>
                 <div className='nav-home-button'>
-                    <NavLink exact to="/">Home</NavLink>
+                    <NavLink exact to="/">lairbnb</NavLink>
                 </div>
             </div>
             {isLoaded && sessionLinks}

@@ -38,30 +38,32 @@ const LoginFormPage = () => {
 
     return (
         <>
-            <form onSubmit={onSubmit}>
-                <ul>
-                    {errors.map((error, i) => <li key={i}>{error}</li>)}
-                </ul>
-                <label>
-                    Username or Email
-                    <input
-                        type='text'
-                        value={credential}
-                        onChange={(e) => setCredential(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Password
-                    <input
-                        type='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
-                <button>Log In</button>
-            </form>
+            <div className="form-wrapper">
+                <form className="form-style" onSubmit={onSubmit}>
+                    <ul className="form-errors">
+                        {errors.map((error, i) => <li key={i}>{error}</li>)}
+                    </ul>
+                    <label className="form-button">
+                        Username or Email
+                        <input
+                            type='text'
+                            value={credential}
+                            onChange={(e) => setCredential(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label className="form-button">
+                        Password
+                        <input
+                            type='password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <button className="form-button">Log In</button>
+                </form>
+            </div>
             <Footer />
         </>
     );

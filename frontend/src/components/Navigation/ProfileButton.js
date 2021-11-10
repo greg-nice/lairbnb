@@ -28,7 +28,7 @@ function ProfileButton ({ user }) {
     return (
         <div className='nav-profile-button-container'>
             <button className='nav-profile-button' onClick={handleMenu}>
-                <i className="fas fa-user-circle" />
+                <i id="profile-button-icon" className="fas fa-user-circle" />
             </button>
             {showMenu && (
                 <div className='nav-dropdown'>

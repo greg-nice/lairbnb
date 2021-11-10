@@ -22,7 +22,7 @@ function App() {
       <Navigation isLoaded={isLoaded}/>
       <Switch>
         <Route exact path="/">
-          <SplashPage />
+          <SplashPage title="Welcome to Lairbnb"/>
         </Route>
         <Route path="/login">
           <LoginFormPage />

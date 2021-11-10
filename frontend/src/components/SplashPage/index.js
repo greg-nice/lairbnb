@@ -24,7 +24,12 @@ function SplashPage() {
             <main>
                 <h1>Hello from SplashPage</h1>
                 {isSpotsLoaded && spots.map(spot => {
-                    return <div key={spot.id}>{spot.name}</div>
+                    return (
+                    <>
+                        <div key={spot.id}>{spot.name}</div>
+                        <div>${spot.price} / night</div>
+                    </>
+                    )
                 })}
             </main>
             <Footer />
