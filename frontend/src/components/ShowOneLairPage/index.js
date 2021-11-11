@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
-import { loadSpot } from '../../store/spots'
+import { loadSpot, removeSpot } from '../../store/spots'
 import Footer from '../Footer/index'
 import './ShowOneLairPage.css';
 
 function ShowOneLairPage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
     const [isSpotLoaded, setIsSpotLoaded] = useState(false);
@@ -20,11 +21,19 @@ function ShowOneLairPage() {
     const handleEditClick = (e) => {
         e.preventDefault();
 
-        
+        console.log("hello from editClick handler");
+
     }
 
     const handleDeleteClick = (e) => {
         e.preventDefault();
+
+        console.log("hello from deleteClick handler");
+
+        if (sessionUser.id === spot.userId) {
+            dispatch(removeSpot(spotId));
+            history.push("/");
+        }
     }
     
     return (

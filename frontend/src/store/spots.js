@@ -67,9 +67,9 @@ export const removeSpot = (spotId) => async (dispatch) => {
         method: 'DELETE',
     });
 
-    const spot = await response.json();
-    dispatch(deleteSpot(spot.id));
-    return spot;
+    if (response.ok) {
+        dispatch(deleteSpot(spotId));
+    }
 }
 
 const initialState = {}

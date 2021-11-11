@@ -27,12 +27,12 @@ function SplashPage() {
                 <h1>Stays in Lairs around the World</h1>
                 {isSpotsLoaded && spots.map(spot => {
                     return (
-                    <>
-                        <Link key={spot.id} to={`/spots/${spot.id}`}>{spot.name}</Link>
-                        <div key={spot.id}>${spot.price} / night</div>
-                        <div key={spot.id}>{spot.city}, {spot.country}</div>
-                        <br></br>
-                    </>
+                    <div key={spot.id}>
+                            <Link to={`/spots/${spot.id}`}>{spot.name}</Link>
+                            <div>${spot.price} / night</div>
+                            <div>{spot.city}, {spot.country}</div>
+                            <br></br>
+                    </div>
                     )
                 })}
             </main>

@@ -46,7 +46,7 @@ function CreateLairFormPage() {
             });
 
         if (spot) {
-            history.push(`/spots/${spot.id}`);
+            history.push("/");
             return;
         }
     };
