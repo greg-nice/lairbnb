@@ -74,7 +74,7 @@ router.post("/", requireAuth, validateSpot, asyncHandler(async (req, res) => {
 // router.put("/:id")
 router.put("/:id", requireAuth, validateSpot, asyncHandler(async (req, res) => {
     const spotId = req.params.id;
-    const spot = Spot.findByPk(spotId);
+    const spot = await Spot.findByPk(spotId);
     const {
         userId,
         address,
