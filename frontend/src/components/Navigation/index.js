@@ -1,22 +1,33 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import ProfileButton from './ProfileButton';
+import { loginDemo } from '../../store/session';
 import './Navigation.css';
 
 function Navigation ({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
+    const dispatch = useDispatch();
+
+    const handleClick = (e) => {
+        e.preventDefault();
+
+        return dispatch(loginDemo());
+    }
 
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser}/>
+            <>
+                <ProfileButton user={sessionUser}/>
+            </>
         );
     } else {
         sessionLinks = (
             <>
                 <div className='nav-auth-buttons'>
+                    <button onClick={handleClick}>Demo</button>
                     <NavLink to="/login">Log In</NavLink>
                     <NavLink to="/signup">Sign Up</NavLink>
                 </div>
