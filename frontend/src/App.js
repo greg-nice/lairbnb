@@ -10,6 +10,8 @@ import Navigation from './components/Navigation';
 import SplashPage from './components/SplashPage';
 import CreateLairFormPage from './components/CreateLairFormPage';
 import ShowOneLairPage from './components/ShowOneLairPage';
+import EditLairFormPage from './components/EditLairFormPage';
+import DeleteLairFormPage from './components/DeleteLairFormPage';
 
 
 function App() {
@@ -35,6 +37,12 @@ function App() {
         </Route>
         <Route path="/spots/new">
           <CreateLairFormPage />
+        </Route>
+        <Route path="/spots/:spotId/edit">
+          <EditLairFormPage />
+        </Route>
+        <Route path="/spots/:spotId/delete">
+          <DeleteLairFormPage />
         </Route>
         <Route path="/spots/:spotId">
           <ShowOneLairPage />

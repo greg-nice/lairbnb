@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useParams, useHistory } from 'react-router-dom';
 
-import { createSpot } from '../../store/spots';
+import { loadSpot, updateSpot } from '../../store/spots';
 import Footer from '../Footer/index';
 
-function CreateLairFormPage() {
+
+function EditLairFormPage() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const { spotId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
+    
+    const spot = useSelector(state => state.spots[spotId])
+
+    const [isSpotLoaded, setIsSpotLoaded] = useState(false);
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
@@ -19,48 +25,68 @@ function CreateLairFormPage() {
     const [price, setPrice] = useState("");
     const [errors, setErrors] = useState([]);
 
+    useEffect(() => {
+        dispatch(loadSpot(spotId)).then(() => { setIsSpotLoaded(true) });
+    }, [dispatch, spotId]);
+
+    useEffect(() => {
+        if (isSpotLoaded) {
+            setAddress(spot.address);
+            setCity(spot.city);
+            setState(spot.state);
+            setCountry(spot.country);
+            setLat(spot.lat);
+            setLng(spot.lng);
+            setName(spot.name);
+            setPrice(spot.price);
+        }
+    }, [spot, isSpotLoaded]);
+
     if (!sessionUser) return <Redirect to="/" />
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        setErrors([]);
-        const formInfo = {
-            userId: sessionUser.id,
-            address,
-            city,
-            state,
-            country,
-            lat,
-            lng,
-            name,
-            price
-        }
+        if (sessionUser.id === spot.userId) {
+            setErrors([]);
+            const formInfo = {
+                id: spotId,
+                userId: sessionUser.id,
+                address,
+                city,
+                state,
+                country,
+                lat,
+                lng,
+                name,
+                price
+            }
 
-        const spot = await dispatch(createSpot(formInfo))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) {
-                    setErrors(data.errors);
-                }
-            });
+            const updatedSpot = await dispatch(updateSpot(formInfo))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) {
+                        setErrors(data.errors);
+                    }
+                });
 
-        if (spot) {
-            history.push("/");
-            return;
+            if (updatedSpot) {
+                history.push(`/spots/${spotId}`);
+            }
         }
     };
 
     const handleCancelClick = (e) => {
         e.preventDefault();
-        history.push("/");
+        history.push(`/spots/${spotId}`);
     }
 
     return (
         <>
-            <div className='form-wrapper'>
-                <h1>Create Lair</h1>
-                <form className='form-style' onSubmit={onSubmit}>
+            {isSpotLoaded && (
+                <div className="edit-form-wrapper">
+                <h1>Edit Lair</h1>
+                <form onSubmit={onSubmit}>
                     <ul className='form-errors'>
                         {errors.map((error, i) => <li key={i}>{error}</li>)}
                     </ul>
@@ -136,13 +162,14 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <button>Submit Lair</button>
+                    <button>Submit</button>
                     <button type="button" onClick={handleCancelClick}>Cancel</button>
                 </form>
             </div>
+            )}
             <Footer />
         </>
-    );
+    )
 }
 
-export default CreateLairFormPage;
+export default EditLairFormPage;

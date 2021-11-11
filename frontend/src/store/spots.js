@@ -21,7 +21,7 @@ const update = (spot) => ({
 })
 
 const deleteSpot = (spotId) => ({
-    tyoe: DELETE_SPOT,
+    type: DELETE_SPOT,
     spotId
 });
 

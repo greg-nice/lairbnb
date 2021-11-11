@@ -23,7 +23,7 @@ router.get("/:id", asyncHandler(async (req, res) => {
     const spot = await Spot.findByPk(id);
 
     return res.json(spot);
-}))
+}));
 
 //Create spot
 // router.post("/");

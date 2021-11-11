@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { loadSpot, removeSpot } from '../../store/spots'
+import { loadSpot } from '../../store/spots'
 import Footer from '../Footer/index'
 import './ShowOneLairPage.css';
 
@@ -23,6 +23,9 @@ function ShowOneLairPage() {
 
         console.log("hello from editClick handler");
 
+        if (sessionUser.id === spot.userId) {
+            history.push(`/spots/${spotId}/edit`);
+        }
     }
 
     const handleDeleteClick = (e) => {
@@ -31,8 +34,9 @@ function ShowOneLairPage() {
         console.log("hello from deleteClick handler");
 
         if (sessionUser.id === spot.userId) {
-            dispatch(removeSpot(spotId));
-            history.push("/");
+            history.push(`/spots/${spotId}/delete`);
+            // dispatch(removeSpot(spotId));
+            // history.push("/");
         }
     }
     
