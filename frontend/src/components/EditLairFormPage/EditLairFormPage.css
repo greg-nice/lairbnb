@@ -1,0 +1,12 @@
+.edit-form-wrapper {
+    min-height: 40rem;
+}
+
+.edit-form {
+    padding-left: 104px;
+    padding-right: 104px;
+}
+
+#edit-form-header {
+    padding-left: 24px;
+}

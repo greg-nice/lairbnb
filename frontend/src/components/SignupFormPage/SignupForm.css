@@ -1,0 +1,13 @@
+.form-wrapper {
+    min-height: 40rem;
+}
+
+.form-style{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-button {
+    margin: 1rem;
+}

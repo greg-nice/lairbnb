@@ -1,0 +1,15 @@
+.footer-wrapper1 {
+    font-size: 16px;
+    display: block;
+    box-sizing: border-box;
+    line-height: 20px;
+    min-height: 150px;
+    background: #f7f7f7;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}

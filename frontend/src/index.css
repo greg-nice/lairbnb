@@ -1,1 +1,9 @@
 /* TODO Add site wide styles */
+body {
+    color: #222222;
+    font-family: 'Roboto', Helvetica, sans-serif;
+    text-decoration: none;
+    background: rgb(255, 255, 255);
+    margin: 0;
+}
+

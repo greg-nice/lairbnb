@@ -1,0 +1,9 @@
+.main-one-spot {
+    display: flex;
+    justify-content: left;
+}
+
+.spot-details {
+    width: fit-content;
+    padding: 80px;
+}

@@ -26,20 +26,20 @@ function ProfileButton ({ user }) {
     }, [showMenu])
 
     return (
-        <>
-            <button onClick={handleMenu}>
-                <i className="fas fa-user-circle" />
+        <div className='nav-profile-button-container'>
+            <button className='nav-profile-button' onClick={handleMenu}>
+                <i id="profile-button-icon" className="fas fa-user-circle" />
             </button>
             {showMenu && (
-                <ul>
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
+                <div className='nav-dropdown'>
+                    <p>{user.username}</p>
+                    <p>{user.email}</p>
+                    <div className='nav-logout-button'>
                         <button onClick={handleLogout}>Log Out</button>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             )}
-        </>
+        </div>
     );
 }
 
