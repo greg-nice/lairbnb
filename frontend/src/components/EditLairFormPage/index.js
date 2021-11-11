@@ -4,6 +4,7 @@ import { Redirect, useParams, useHistory } from 'react-router-dom';
 
 import { loadSpot, updateSpot } from '../../store/spots';
 import Footer from '../Footer/index';
+import './EditLairFormPage.css'
 
 
 function EditLairFormPage() {
@@ -50,8 +51,7 @@ function EditLairFormPage() {
         if (sessionUser.id === spot.userId) {
             setErrors([]);
             const formInfo = {
-                id: spotId,
-                userId: sessionUser.id,
+                ...spot,
                 address,
                 city,
                 state,
@@ -85,87 +85,87 @@ function EditLairFormPage() {
         <>
             {isSpotLoaded && (
                 <div className="edit-form-wrapper">
-                <h1>Edit Lair</h1>
-                <form onSubmit={onSubmit}>
-                    <ul className='form-errors'>
-                        {errors.map((error, i) => <li key={i}>{error}</li>)}
-                    </ul>
-                    <div>
-                        <label>Lair Name</label>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={e => setName(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Address</label>
-                        <input
-                            type="text"
-                            value={address}
-                            onChange={e => setAddress(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>City</label>
-                        <input
-                            type="text"
-                            value={city}
-                            onChange={e => setCity(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>State</label>
-                        <input
-                            type="text"
-                            value={state}
-                            onChange={e => setState(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Country</label>
-                        <input
-                            type="text"
-                            value={country}
-                            onChange={e => setCountry(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Latitude</label>
-                        <input
-                            type="number"
-                            value={lat}
-                            onChange={e => setLat(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Longitude</label>
-                        <input
-                            type="number"
-                            value={lng}
-                            onChange={e => setLng(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Price</label>
-                        <input
-                            type="number"
-                            value={price}
-                            onChange={e => setPrice(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button>Submit</button>
-                    <button type="button" onClick={handleCancelClick}>Cancel</button>
-                </form>
-            </div>
+                    <h1 id="edit-form-header">Edit Lair</h1>
+                    <form className="edit-form" onSubmit={onSubmit}>
+                        <ul className='form-errors'>
+                            {errors.map((error, i) => <li key={i}>{error}</li>)}
+                        </ul>
+                        <div>
+                            <label>Lair Name</label>
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={e => setName(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Address</label>
+                            <input
+                                type="text"
+                                value={address}
+                                onChange={e => setAddress(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>City</label>
+                            <input
+                                type="text"
+                                value={city}
+                                onChange={e => setCity(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>State</label>
+                            <input
+                                type="text"
+                                value={state}
+                                onChange={e => setState(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Country</label>
+                            <input
+                                type="text"
+                                value={country}
+                                onChange={e => setCountry(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Latitude</label>
+                            <input
+                                type="number"
+                                value={lat}
+                                onChange={e => setLat(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Longitude</label>
+                            <input
+                                type="number"
+                                value={lng}
+                                onChange={e => setLng(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Price</label>
+                            <input
+                                type="number"
+                                value={price}
+                                onChange={e => setPrice(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <button>Submit</button>
+                        <button type="button" onClick={handleCancelClick}>Cancel</button>
+                    </form>
+                </div>
             )}
             <Footer />
         </>
