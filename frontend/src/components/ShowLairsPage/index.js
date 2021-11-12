@@ -32,7 +32,7 @@ function ShowLairsPage() {
                         <div className='lair-div-wrapper' key={spot.id}>
                             <div className="lair-image-wrapper">
                                 <Link to={`/spots/${spot.id}`}>
-                                    <img className="lair-image" src={spot.url}></img>
+                                    <img className="lair-image" src={spot.url} alt=""></img>
                                 </Link>
                             </div>
                             <div className="spot-info-wrapper">

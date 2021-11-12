@@ -2,7 +2,7 @@
 // import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { loadSpots } from '../../store/spots'
+// import { loadSpots } from '../../store/spots'
 import Footer from '../Footer/index'
 import './SplashPage.css';
 

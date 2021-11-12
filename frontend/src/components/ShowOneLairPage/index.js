@@ -43,7 +43,7 @@ function ShowOneLairPage() {
                 {isSpotLoaded && (
                 <div className="spot-details">
                     <h1>{spot.name}</h1>
-                        <img className="spot-detail-image" src={spot.url}></img>
+                        <img className="spot-detail-image" src={spot.url} alt=""></img>
                     <div className="spot-detail-data">
                         <div>{spot.address}</div>
                         <div>{`${spot.city}, ${spot.state}, ${spot.country}`}</div>
