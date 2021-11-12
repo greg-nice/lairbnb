@@ -24,6 +24,7 @@ function EditLairFormPage() {
     const [lng, setLng] = useState("");
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
+    const [url, setUrl] = useState("");
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
@@ -40,6 +41,7 @@ function EditLairFormPage() {
             setLng(spot.lng);
             setName(spot.name);
             setPrice(spot.price);
+            setUrl(spot.url);
         }
     }, [spot, isSpotLoaded]);
 
@@ -59,7 +61,8 @@ function EditLairFormPage() {
                 lat,
                 lng,
                 name,
-                price
+                price,
+                url
             }
 
             const updatedSpot = await dispatch(updateSpot(formInfo))
@@ -159,6 +162,15 @@ function EditLairFormPage() {
                                 type="number"
                                 value={price}
                                 onChange={e => setPrice(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Image Url</label>
+                            <input
+                                type="url"
+                                value={url}
+                                onChange={e => setUrl(e.target.value)}
                                 required
                             />
                         </div>

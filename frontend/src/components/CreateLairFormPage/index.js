@@ -4,7 +4,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 
 import { createSpot } from '../../store/spots';
 import Footer from '../Footer/index';
-import './CreateLairFormPage.css'
+import './CreateLairFormPage.css';
 
 function CreateLairFormPage() {
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function CreateLairFormPage() {
     const [lng, setLng] = useState("");
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
-    // const [url, setUrl] = useState("");
+    const [url, setUrl] = useState("");
     const [errors, setErrors] = useState([]);
 
     if (!sessionUser) return <Redirect to="/" />
@@ -37,7 +37,7 @@ function CreateLairFormPage() {
             lng,
             name,
             price,
-            // url
+            url
         }
 
         const spot = await dispatch(createSpot(formInfo))
@@ -67,8 +67,8 @@ function CreateLairFormPage() {
                     <ul className='form-errors'>
                         {errors.map((error, i) => <li key={i}>{error}</li>)}
                     </ul>
-                    <div>
-                        <label>Lair Name</label>
+                    <div className='create-form-div'>
+                        <label className="form-label">Lair Name</label>
                         <input
                             type="text"
                             value={name}
@@ -76,8 +76,8 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <div>
-                        <label>Address</label>
+                    <div className='create-form-div'>
+                        <label className="form-label">Address</label>
                         <input
                             type="text"
                             value={address}
@@ -85,8 +85,8 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <div>
-                        <label>City</label>
+                    <div className='create-form-div'>
+                        <label className="form-label">City</label>
                         <input
                             type="text"
                             value={city}
@@ -94,8 +94,8 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <div>
-                        <label>State</label>
+                    <div className='create-form-div'>
+                        <label className="form-label">State</label>
                         <input
                             type="text"
                             value={state}
@@ -103,8 +103,8 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <div>
-                        <label>Country</label>
+                    <div className='create-form-div'>
+                        <label className="form-label">Country</label>
                         <input
                             type="text"
                             value={country}
@@ -112,8 +112,8 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <div>
-                        <label>Latitude</label>
+                    <div className='create-form-div'>
+                        <label className="form-label">Latitude</label>
                         <input
                             type="number"
                             value={lat}
@@ -121,8 +121,8 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <div>
-                        <label>Longitude</label>
+                    <div className='create-form-div'>
+                        <label className="form-label">Longitude</label>
                         <input
                             type="number"
                             value={lng}
@@ -130,8 +130,8 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <div>
-                        <label>Price</label>
+                    <div className='create-form-div'>
+                        <label className="form-label">Price</label>
                         <input
                             type="number"
                             value={price}
@@ -139,7 +139,7 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    {/* <div>
+                    <div>
                         <label>Image Url</label>
                         <input
                             type="url"
@@ -147,9 +147,9 @@ function CreateLairFormPage() {
                             onChange={e => setUrl(e.target.value)}
                             required
                         />
-                    </div> */}
-                    <button>Submit Lair</button>
-                    <button type="button" onClick={handleCancelClick}>Cancel</button>
+                    </div>
+                    <button className="create-form-button">Submit Lair</button>
+                    <button className="create-form-button" type="button" onClick={handleCancelClick}>Cancel</button>
                 </form>
             </div>
             <Footer />
