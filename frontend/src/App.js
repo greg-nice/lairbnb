@@ -12,6 +12,7 @@ import CreateLairFormPage from './components/CreateLairFormPage';
 import ShowOneLairPage from './components/ShowOneLairPage';
 import EditLairFormPage from './components/EditLairFormPage';
 import DeleteLairFormPage from './components/DeleteLairFormPage';
+import ShowLairsPage from './components/ShowLairsPage';
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignupFormPage />
+        </Route>
+        <Route exact path="/spots">
+          <ShowLairsPage />
         </Route>
         <Route path="/spots/new">
           <CreateLairFormPage />

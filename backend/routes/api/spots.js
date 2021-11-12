@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", asyncHandler(async (req, res) => {
     const spots = await Spot.findAll({
         include: User,
-        limit: 10,
+        limit: 30,
     })
     return res.json(spots);
 }));
@@ -32,14 +32,39 @@ const validateSpot = [
     check('address')
         .exists({ checkFalsy: true })
         .notEmpty()
-        .withMessage("CUSTOM MESSAGE HERE"),
-    check('city'),
-    check('state'),
-    check('country'),
-    check('lat'),
-    check('lng'),
-    check('name'),
-    check('price'),
+        .withMessage("Please provide a valid address"),
+    check('city')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Please provide a valid city"),
+    check('state')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Please provide a valid state"),
+    check('country')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Please provide a valid country"),
+    check('lat')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Please provide a valide latitude"),
+    check('lng')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Please provide a valid longitude"),
+    check('name')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Please provide a valid name"),
+    check('price')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Please provide a valid price"),
+    check('url')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Please provide a valid image url"),
     handleValidationErrors,
 ];
 
@@ -52,7 +77,9 @@ router.post("/", requireAuth, validateSpot, asyncHandler(async (req, res) => {
         lat,
         lng,
         name,
-        price} = req.body;
+        price,
+        url,
+    } = req.body;
 
     const spot = await Spot.build({
         userId,
@@ -64,8 +91,16 @@ router.post("/", requireAuth, validateSpot, asyncHandler(async (req, res) => {
         lng,
         name,
         price,
+        url,
     });
     await spot.save();
+    
+    // const { url } = req.body;
+    // const image = await Image.build({
+    //     spotId: spot.id,
+    //     url
+    // });
+    // await image.save();
 
     return res.json({ spot });
 }))
