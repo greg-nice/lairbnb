@@ -43,14 +43,16 @@ function ShowOneLairPage() {
                 {isSpotLoaded && (
                 <div className="spot-details">
                     <h1>{spot.name}</h1>
-                    <div>{spot.address}</div>
-                    <div>{`${spot.city}, ${spot.state}`}</div>
-                    <div>{spot.country}</div>
-                    <div>Latitude: {spot.lat}</div>
-                    <div>Longitude: {spot.lng}</div>
-                    <div>${spot.price} / night</div>
-                    {/* {sessionUser.id === spot.userId && <button onClick={handleEditClick}>Edit</button>}
-                    {sessionUser.id === spot.userId && <button onClick={handleDeleteClick}>Delete</button>} */}
+                        <img className="spot-detail-image" src="https://i.guim.co.uk/img/media/ea3b0d576028663ce489ca63e61ffde45bbe2631/0_181_2142_1285/master/2142.jpg?width=1020&quality=45&auto=format&fit=max&dpr=2&s=82fc39e770f2a9ca8f1547d0900cef4d"></img>
+                    <div className="spot-detail-data">
+                        <div>{spot.address}</div>
+                        <div>{`${spot.city}, ${spot.state}, ${spot.country}`}</div>
+                        {/* <div>Latitude: {spot.lat}</div>
+                        <div>Longitude: {spot.lng}</div> */}
+                        <div><span className="price-span">${spot.price}</span> / night</div>
+                        {sessionUser && sessionUser.id === spot.userId && <button onClick={handleEditClick}>Edit</button>}
+                        {sessionUser && sessionUser.id === spot.userId && <button onClick={handleDeleteClick}>Delete</button>}
+                    </div>
                 </div>
                 )}
             </main>

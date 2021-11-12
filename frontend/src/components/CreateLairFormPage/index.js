@@ -4,6 +4,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 
 import { createSpot } from '../../store/spots';
 import Footer from '../Footer/index';
+import './CreateLairFormPage.css'
 
 function CreateLairFormPage() {
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function CreateLairFormPage() {
     const [lng, setLng] = useState("");
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
+    // const [url, setUrl] = useState("");
     const [errors, setErrors] = useState([]);
 
     if (!sessionUser) return <Redirect to="/" />
@@ -34,7 +36,8 @@ function CreateLairFormPage() {
             lat,
             lng,
             name,
-            price
+            price,
+            // url
         }
 
         const spot = await dispatch(createSpot(formInfo))
@@ -46,20 +49,20 @@ function CreateLairFormPage() {
             });
 
         if (spot) {
-            history.push("/");
+            history.push(`/spots/`);
             return;
         }
     };
 
     const handleCancelClick = (e) => {
         e.preventDefault();
-        history.push("/");
+        history.push("/spots");
     }
 
     return (
         <>
             <div className='form-wrapper'>
-                <h1>Create Lair</h1>
+                <h1 className='create-form-h1'>Create Lair</h1>
                 <form className='form-style' onSubmit={onSubmit}>
                     <ul className='form-errors'>
                         {errors.map((error, i) => <li key={i}>{error}</li>)}
@@ -136,6 +139,15 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
+                    {/* <div>
+                        <label>Image Url</label>
+                        <input
+                            type="url"
+                            value={url}
+                            onChange={e => setUrl(e.target.value)}
+                            required
+                        />
+                    </div> */}
                     <button>Submit Lair</button>
                     <button type="button" onClick={handleCancelClick}>Cancel</button>
                 </form>

@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", asyncHandler(async (req, res) => {
     const spots = await Spot.findAll({
         include: User,
-        limit: 10,
+        limit: 30,
     })
     return res.json(spots);
 }));
@@ -66,6 +66,13 @@ router.post("/", requireAuth, validateSpot, asyncHandler(async (req, res) => {
         price,
     });
     await spot.save();
+    
+    // const { url } = req.body;
+    // const image = await Image.build({
+    //     spotId: spot.id,
+    //     url
+    // });
+    // await image.save();
 
     return res.json({ spot });
 }))

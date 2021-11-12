@@ -2,6 +2,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { removeSpot } from '../../store/spots'
+import './DeleteLairFormPage.css'
 
 
 function DeleteLairFormPage() {
@@ -21,11 +22,13 @@ function DeleteLairFormPage() {
     }
 
     return (
-        <div>
+        <div className="delete-form-wrapper">
             <h1>Delete Lair</h1>
-            <p>Are you sure you want to delete this Lair?</p>
-            <button onClick={handleCancelClick}>Cancel</button>
-            <button onClick={handleDeleteClick}>Delete</button>
+            <div className="delete-form-body">
+                <p>Are you sure you want to delete this Lair?</p>
+                <button onClick={handleCancelClick}>Cancel</button>
+                <button onClick={handleDeleteClick}>Delete</button>
+            </div>
         </div>
     );
 }
