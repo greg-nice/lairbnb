@@ -8,6 +8,7 @@ import './ShowLairsPage.css';
 
 function ShowLairsPage() {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const [isSpotsLoaded, setIsSpotsLoaded] = useState(false);
     const spots = useSelector(state => {
         return Object.keys(state.spots).map(spotId => state.spots[spotId]);
@@ -22,13 +23,16 @@ function ShowLairsPage() {
     return (
         <>
             <main className="spots-main">
-                <h1>Stay in a Lair</h1>
+                <div className="heading-wrapper">
+                    <h1 className='spots-heading'>Stay in a Lair</h1>
+                    {sessionUser && <Link to="/spots/new"><button className='create-lair-button'>Create a Lair</button></Link>}
+                </div>
                 {isSpotsLoaded && spots.map(spot => {
                     return (
                         <div className='lair-div-wrapper' key={spot.id}>
                             <div className="lair-image-wrapper">
                                 <Link to={`/spots/${spot.id}`}>
-                                    <img className="lair-image" src={`https://imgix.ranker.com/user_node_img/50041/1000808726/original/legion-of-doom-s-hall-of-doom-photo-u1`}></img>
+                                    <img className="lair-image" src={spot.url}></img>
                                 </Link>
                             </div>
                             <div className="spot-info-wrapper">

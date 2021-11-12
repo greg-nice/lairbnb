@@ -43,7 +43,7 @@ function ShowOneLairPage() {
                 {isSpotLoaded && (
                 <div className="spot-details">
                     <h1>{spot.name}</h1>
-                        <img className="spot-detail-image" src="https://i.guim.co.uk/img/media/ea3b0d576028663ce489ca63e61ffde45bbe2631/0_181_2142_1285/master/2142.jpg?width=1020&quality=45&auto=format&fit=max&dpr=2&s=82fc39e770f2a9ca8f1547d0900cef4d"></img>
+                        <img className="spot-detail-image" src={spot.url}></img>
                     <div className="spot-detail-data">
                         <div>{spot.address}</div>
                         <div>{`${spot.city}, ${spot.state}, ${spot.country}`}</div>
@@ -60,5 +60,7 @@ function ShowOneLairPage() {
         </>
     )
 }
+
+// https://i.guim.co.uk/img/media/ea3b0d576028663ce489ca63e61ffde45bbe2631/0_181_2142_1285/master/2142.jpg?width=1020&quality=45&auto=format&fit=max&dpr=2&s=82fc39e770f2a9ca8f1547d0900cef4d
 
 export default ShowOneLairPage;
