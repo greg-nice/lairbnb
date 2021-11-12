@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ProfileButton from './ProfileButton';
-import { loginDemo } from '../../store/session';
+import { loginUser } from '../../store/session';
 import './Navigation.css';
 
 function Navigation ({ isLoaded }) {
@@ -13,7 +13,12 @@ function Navigation ({ isLoaded }) {
     const handleClick = (e) => {
         e.preventDefault();
 
-        return dispatch(loginDemo());
+        const formInfo = {
+            credential: "DemoUser",
+            password: 'password'
+        }
+
+        return dispatch(loginUser(formInfo));
     }
 
     let sessionLinks;

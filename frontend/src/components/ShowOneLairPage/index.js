@@ -12,6 +12,7 @@ function ShowOneLairPage() {
     const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
     const [isSpotLoaded, setIsSpotLoaded] = useState(false);
+    // const [isAuthor, setIsAuthor] = useState(false)
     const spot = useSelector(state => state.spots[spotId]);
 
     useEffect(() => {
@@ -21,8 +22,6 @@ function ShowOneLairPage() {
     const handleEditClick = (e) => {
         e.preventDefault();
 
-        console.log("hello from editClick handler");
-
         if (sessionUser.id === spot.userId) {
             history.push(`/spots/${spotId}/edit`);
         }
@@ -30,8 +29,6 @@ function ShowOneLairPage() {
 
     const handleDeleteClick = (e) => {
         e.preventDefault();
-
-        console.log("hello from deleteClick handler");
 
         if (sessionUser.id === spot.userId) {
             history.push(`/spots/${spotId}/delete`);
@@ -52,8 +49,8 @@ function ShowOneLairPage() {
                     <div>Latitude: {spot.lat}</div>
                     <div>Longitude: {spot.lng}</div>
                     <div>${spot.price} / night</div>
-                    {sessionUser.id === spot.userId && <button onClick={handleEditClick}>Edit</button>}
-                    {sessionUser.id === spot.userId && <button onClick={handleDeleteClick}>Delete</button>}
+                    {/* {sessionUser.id === spot.userId && <button onClick={handleEditClick}>Edit</button>}
+                    {sessionUser.id === spot.userId && <button onClick={handleDeleteClick}>Delete</button>} */}
                 </div>
                 )}
             </main>

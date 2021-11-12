@@ -3,6 +3,19 @@ main {
     min-height: 40rem;
 }
 
-.splash-main {
-    margin-bottom: 40px;
+.splash-link-wrapper {
+    display:flex;
+    flex-direction: column;
+}
+
+#spots-link {
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+}
+
+#splash-image {
+    width: 100%;
+    border-radius: 25px;
 }
