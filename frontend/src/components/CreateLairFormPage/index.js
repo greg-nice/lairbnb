@@ -28,6 +28,7 @@ function CreateLairFormPage() {
         if (price > 30000) errors.push("Price cannot exceed $30000");
         if (name.length < 3) errors.push("Lair Name must be at least 3 characters in length");
         if (lat > 180 || lat < -180) errors.push("Latitude must be between -180 and 180");
+        if (lng > 180 || lng < -180) errors.push("Longitude must be between -180 and 180");
         return errors;
     }
 
@@ -38,6 +39,7 @@ function CreateLairFormPage() {
         const errors = validate();
         setErrors(errors);
         if(errors.length > 0) return;
+        
         const formInfo = {
             userId: sessionUser.id,
             address,
