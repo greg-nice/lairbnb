@@ -50,7 +50,7 @@ function EditLairFormPage() {
     const validate = () => {
         const errors = [];
         if (price > 30000) errors.push("Price cannot exceed $30000");
-        if (name.length < 3) errors.push("Lair Name must be at least 3 characters in length)");
+        if (name.length < 3) errors.push("Lair Name must be at least 3 characters in length");
         if (lat > 180 || lat < -180) errors.push("Latitude must be between -180 and 180");
         return errors;
     }
