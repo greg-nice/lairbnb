@@ -26,7 +26,6 @@ function SplashPage() {
                     <Link id="spots-link-img" to="/spots">
                         <img id="splash-image" src="https://cdn3.whatculture.com/images/2019/01/31939a851d996d1c-600x338.jpg" alt=""></img>
                     </Link>
-                    <Link id="spots-link">Stay in a Lair</Link>
                 </div>
             </main>
             <Footer />
