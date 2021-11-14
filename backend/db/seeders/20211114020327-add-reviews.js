@@ -16,7 +16,7 @@ module.exports = {
       {
         userId: 2,
         spotId: 1,
-        review: "Snake Mountain was a dream come true! The picures don't do it justice.",
+        review: "Snake Mountain was a dream come true! The pictures don't do it justice.",
         createdAt: new Date(),
         updatedAt: new Date()
       },

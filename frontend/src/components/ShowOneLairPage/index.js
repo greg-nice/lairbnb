@@ -6,6 +6,7 @@ import { loadSpot } from '../../store/spots';
 import { getReviews } from '../../store/reviews';
 import DisplayReviews from '../DisplayReviews';
 import EditReviewForm from '../EditReviewForm';
+import DeleteReviewForm from '../DeleteReviewForm';
 import Footer from '../Footer/index';
 import './ShowOneLairPage.css';
 
@@ -15,7 +16,9 @@ function ShowOneLairPage() {
     const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
     const [isSpotLoaded, setIsSpotLoaded] = useState(false);
+    const [isReviewsLoaded, setIsReviewsLoaded] = useState(false);
     const [editReviewId, setEditReviewId] = useState(null);
+    const [deleteReviewId, setDeleteReviewId] = useState(null)
     const spot = useSelector(state => state.spots[spotId]);
     const reviews = useSelector(state => {
         return Object.keys(state.reviews).map(reviewId => state.reviews[reviewId])
@@ -25,9 +28,18 @@ function ShowOneLairPage() {
         dispatch(loadSpot(spotId)).then(() => {
             setIsSpotLoaded(true);
         });
-        dispatch(getReviews(spotId));
-        setEditReviewId(null);
     }, [dispatch, spotId]);
+
+    useEffect(() => {
+        dispatch(getReviews(spotId)).then(() => {
+            setIsReviewsLoaded(true);
+        });
+    }, [dispatch, spotId]);
+
+    useEffect(() => {
+        setEditReviewId(null);
+        setDeleteReviewId(null);
+    }, [dispatch]);
 
     const handleEditClick = (e) => {
         e.preventDefault();
@@ -53,6 +65,10 @@ function ShowOneLairPage() {
         content = (
             <EditReviewForm spot={spot} reviewId={editReviewId} hideForm={() => setEditReviewId(null)}/>
         )
+    } else if (deleteReviewId) {
+        content = (
+            <DeleteReviewForm spot={spot} reviewId={deleteReviewId} hideForm={() => setDeleteReviewId(null)}/>
+        )
     } else if (isSpotLoaded) {
         content = (
             <>
@@ -63,11 +79,11 @@ function ShowOneLairPage() {
                     {/* <div>Latitude: {spot.lat}</div>
                     <div>Longitude: {spot.lng}</div> */}
                     <div className="spot-detail-price"><span className="price-span">${spot.price}</span> / night</div>
-                    {sessionUser && sessionUser.id === spot.userId && <button onClick={handleEditClick}>Edit</button>}
-                    {sessionUser && sessionUser.id === spot.userId && <button onClick={handleDeleteClick}>Delete</button>}
+                    {sessionUser && sessionUser.id === spot.userId && <button className="spot-detail-button" onClick={handleEditClick}>Edit</button>}
+                    {sessionUser && sessionUser.id === spot.userId && <button className="spot-detail-button" onClick={handleDeleteClick}>Delete</button>}
                 </div>
                 <div>
-                    {reviews && <DisplayReviews reviews={reviews} sessionUser={sessionUser} setEditReviewId={setEditReviewId}/>}
+                    {reviews && isReviewsLoaded && <DisplayReviews reviews={reviews} sessionUser={sessionUser} setEditReviewId={setEditReviewId} setDeleteReviewId={setDeleteReviewId}/>}
                     {/* {reviews && <div className="spot-detail-header">{reviews.length} {reviews.length === 1 ? "review" : "reviews"}</div>}
                     {reviews.map(review => {
                         return (

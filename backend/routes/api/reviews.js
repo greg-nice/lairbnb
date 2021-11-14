@@ -29,17 +29,15 @@ router.put("/:id", requireAuth, validateReviewUpdate, asyncHandler(async functio
     const reviewObj = await Review.findByPk(reviewId);
 
     const {
-        userId,
         review,
     } = req.body;
 
     const updatedReview = {
-        userId,
-        spotId,
+        ...reviewObj,
         review,
     }
 
-    const updated = await reviewObj.update(updatedRevew);
+    const updated = await reviewObj.update(updatedReview);
     return res.json(updated);
 }));
 

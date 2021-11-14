@@ -30,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       },
     },
+    url: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
   },
     {
       defaultScope: {

@@ -2,6 +2,7 @@
     display:flex;
     margin-top: 1.5em;
     flex-wrap: wrap;
+    margin-bottom: 1.5em;
 }
 
 .review-div {
@@ -9,7 +10,7 @@
     display: block;
     margin-left: 0px;
     padding-left: 8px;
-    padding-right: 8px;
+    padding-right: 16px;
     position: relative;
     width: 50%;
     font-size: 16px;
@@ -17,6 +18,16 @@
     font-weight: 400;
 }
 
+.profile-pic-and-name-date-group {
+    display: flex;
+}
+
+.profile-pic {
+    height: 50px;
+    width: 50px;
+    margin-right: 8px;
+    border-radius: 20%;
+}
 .reviewer-name {
     font-weight: bold;
 }
@@ -27,8 +38,21 @@
     color: rgb(113, 113, 113)
 }
 
-.profile-pic {
-    width: 50px;
-    margin-right: 8px;
-    border-radius: 25%;
+.review-content {
+    line-height: 1.2rem;
+}
+
+.display-review-button {
+    border-color: #DDDDDD;
+    border-radius: 21px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 3px 6px 3px 6px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    box-sizing:border-box;
+}
+
+.display-review-button:hover {
+    background-color: rgb(218, 218, 218);
 }

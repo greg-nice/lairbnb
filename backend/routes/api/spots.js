@@ -27,7 +27,6 @@ router.get("/:id", asyncHandler(async (req, res) => {
 
 //Create spot
 // router.post("/");
-//TODO: complete validation code below:
 const validateSpot = [
     check('address')
         .exists({ checkFalsy: true })
@@ -55,7 +54,8 @@ const validateSpot = [
         .notEmpty(),
     check('url')
         .exists({ checkFalsy: true })
-        .notEmpty(),
+        .notEmpty()
+        .isURL({ require_protocol: false, require_host: false }),
     handleValidationErrors,
 ];
 
@@ -138,6 +138,12 @@ router.put("/:id", requireAuth, validateSpot, asyncHandler(async (req, res) => {
 // router.delete("/:id", requireAuth, asyncHandler(async (req, res) => {
 router.delete("/:id", requireAuth, asyncHandler(async (req, res) => {
     const spotId = req.params.id;
+    const reviews = await Review.findAll({
+        where: {
+            spotId
+        }
+    })
+    reviews.forEach(review => review.destroy());
     const spot = await Spot.findByPk(spotId);
 
     // if (res.locals.user.id !== spot.userId) {

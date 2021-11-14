@@ -13,6 +13,7 @@ const SignupFormPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [url, setUrl] = useState("");
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/" />;
@@ -26,7 +27,8 @@ const SignupFormPage = () => {
             const formInfo = {
                 email,
                 username,
-                password
+                password,
+                url
             }
             return dispatch(signup(formInfo))
                 .catch(async (res) => {
@@ -81,6 +83,15 @@ const SignupFormPage = () => {
                             value={confirmPassword}
                             onChange={e => setConfirmPassword(e.target.value)}
                             required
+                        />
+                    </label>
+                    <label>
+                        Image Url
+                        <input
+                        type="url"
+                        value={url}
+                        onChange={e => setUrl(e.target.value)}
+                        required
                         />
                     </label>
                     <button className="form-button">Sign Up</button>
