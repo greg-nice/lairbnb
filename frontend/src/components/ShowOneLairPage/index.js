@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 
 import { loadSpot } from '../../store/spots';
 import { getReviews } from '../../store/reviews';
+import DisplayReviews from '../DisplayReviews';
 import EditReviewForm from '../EditReviewForm';
 import Footer from '../Footer/index';
 import './ShowOneLairPage.css';
@@ -46,16 +47,6 @@ function ShowOneLairPage() {
         }
     }
 
-    const handleReviewEditClick = (e) => {
-        e.preventDefault();
-
-    }
-
-    const handleReviewDeleteClick = (e) => {
-        e.preventDefault();
-
-    }
-
     let content = null
 
     if (editReviewId) {
@@ -67,27 +58,28 @@ function ShowOneLairPage() {
             <>
                 <img className="spot-detail-image" src={spot.url} alt=""></img>
                 <div className="spot-detail-data">
-                    <div>{spot.address}</div>
-                    <div>{`${spot.city}, ${spot.state}, ${spot.country}`}</div>
+                    <div className="spot-detail-address">{spot.address}</div>
+                    <div className="spot-detail-location">{`${spot.city}, ${spot.state}, ${spot.country}`}</div>
                     {/* <div>Latitude: {spot.lat}</div>
                     <div>Longitude: {spot.lng}</div> */}
-                    <div><span className="price-span">${spot.price}</span> / night</div>
+                    <div className="spot-detail-price"><span className="price-span">${spot.price}</span> / night</div>
                     {sessionUser && sessionUser.id === spot.userId && <button onClick={handleEditClick}>Edit</button>}
                     {sessionUser && sessionUser.id === spot.userId && <button onClick={handleDeleteClick}>Delete</button>}
                 </div>
                 <div>
-                    {reviews && <h4>{reviews.length} {reviews.length === 1 ? "review" : "reviews"}</h4>}
+                    {reviews && <DisplayReviews reviews={reviews} sessionUser={sessionUser} setEditReviewId={setEditReviewId}/>}
+                    {/* {reviews && <div className="spot-detail-header">{reviews.length} {reviews.length === 1 ? "review" : "reviews"}</div>}
                     {reviews.map(review => {
                         return (
                             <div className="review-div" key={review.id}>
-                                {review.User.username} <br />
+                                <span className="reviewer-name">{review.User.username}</span> <br />
                                 {review.createdAt.slice(0,10)} <br />
                                 {review.review} 
                                 {sessionUser && sessionUser.id === review.userId && <button onClick={handleReviewEditClick}>Edit</button>}
                                 {sessionUser && sessionUser.id === review.userId && <button onClick={handleReviewDeleteClick}>Delete</button>}
                             </div>
                         )
-                    })}
+                    })} */}
                 </div>
             </>
         )
