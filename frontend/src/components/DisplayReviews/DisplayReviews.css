@@ -1,6 +1,12 @@
+.spot-reviews-wrapper {
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 2em;
+}
+
 .review-wrapper {
     display:flex;
-    margin-top: 1.5em;
+    margin-top: 2em;
     flex-wrap: wrap;
     margin-bottom: 1.5em;
 }
@@ -9,6 +15,7 @@
     box-sizing: border-box;
     display: block;
     margin-left: 0px;
+    padding-bottom: 2em;
     padding-left: 8px;
     padding-right: 16px;
     position: relative;

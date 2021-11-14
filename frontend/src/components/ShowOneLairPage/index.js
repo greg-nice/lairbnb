@@ -7,6 +7,7 @@ import { getReviews } from '../../store/reviews';
 import DisplayReviews from '../DisplayReviews';
 import EditReviewForm from '../EditReviewForm';
 import DeleteReviewForm from '../DeleteReviewForm';
+import CreateReviewForm from '../CreateReviewForm';
 import Footer from '../Footer/index';
 import './ShowOneLairPage.css';
 
@@ -18,7 +19,8 @@ function ShowOneLairPage() {
     const [isSpotLoaded, setIsSpotLoaded] = useState(false);
     const [isReviewsLoaded, setIsReviewsLoaded] = useState(false);
     const [editReviewId, setEditReviewId] = useState(null);
-    const [deleteReviewId, setDeleteReviewId] = useState(null)
+    const [deleteReviewId, setDeleteReviewId] = useState(null);
+    const [createReviewId, setCreateReviewId] = useState(null);
     const spot = useSelector(state => state.spots[spotId]);
     const reviews = useSelector(state => {
         return Object.keys(state.reviews).map(reviewId => state.reviews[reviewId])
@@ -69,6 +71,10 @@ function ShowOneLairPage() {
         content = (
             <DeleteReviewForm spot={spot} reviewId={deleteReviewId} hideForm={() => setDeleteReviewId(null)}/>
         )
+    } else if (createReviewId) {
+        content = (
+            <CreateReviewForm spot={spot} hideForm={() => setCreateReviewId(null)} />
+        )
     } else if (isSpotLoaded) {
         content = (
             <>
@@ -83,7 +89,7 @@ function ShowOneLairPage() {
                     {sessionUser && sessionUser.id === spot.userId && <button className="spot-detail-button" onClick={handleDeleteClick}>Delete</button>}
                 </div>
                 <div>
-                    {reviews && isReviewsLoaded && <DisplayReviews reviews={reviews} sessionUser={sessionUser} setEditReviewId={setEditReviewId} setDeleteReviewId={setDeleteReviewId}/>}
+                    {reviews && isReviewsLoaded && <DisplayReviews reviews={reviews} sessionUser={sessionUser} setEditReviewId={setEditReviewId} setDeleteReviewId={setDeleteReviewId} setCreateReviewId={setCreateReviewId}/>}
                     {/* {reviews && <div className="spot-detail-header">{reviews.length} {reviews.length === 1 ? "review" : "reviews"}</div>}
                     {reviews.map(review => {
                         return (

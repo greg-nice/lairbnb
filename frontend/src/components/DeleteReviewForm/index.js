@@ -1,17 +1,21 @@
+// import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getReviews, deleteReview } from '../../store/reviews';
+import { deleteReview } from '../../store/reviews';
+// import { getReviews } from '../../store/reviews';
 
 const DeleteReviewForm = ({ spot, reviewId, hideForm }) => {
     const review = useSelector(state => state.reviews[reviewId]);
     const dispatch = useDispatch();
+    // const history = useHistory();
 
     const handleDeleteClick = async (e) => {
         e.preventDefault();
 
         const deletedReview = await dispatch(deleteReview(reviewId));
         if (deletedReview) {
-            dispatch(getReviews(spot.id));
+            // dispatch(getReviews(spot.id));
             hideForm();
+            // history.push(`/spots/${spot.id}`);
         }
     };
 

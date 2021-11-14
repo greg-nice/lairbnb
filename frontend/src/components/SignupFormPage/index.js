@@ -85,7 +85,7 @@ const SignupFormPage = () => {
                             required
                         />
                     </label>
-                    <label>
+                    <label className="form-button">
                         Image Url
                         <input
                         type="url"

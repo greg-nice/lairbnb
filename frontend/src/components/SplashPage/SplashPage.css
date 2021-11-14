@@ -1,21 +1,31 @@
 main {
-    margin: 0 24px;
+    margin: 0 80px;
     min-height: 40rem;
 }
 
 .splash-link-wrapper {
+    /* display:flex;
+    flex-direction: column; */
     display:flex;
-    flex-direction: column;
+    justify-content: center;
 }
 
-#spots-link {
+/* #spots-link {
     text-decoration: none;
     font-size: 32px;
     font-weight: 700;
     color: rgb(255, 255, 255);
+} */
+
+a#spots-link-img {
+    /* justify-self: center; */
+    width: 100%;
 }
+
+
 
 #splash-image {
     width: 100%;
     border-radius: 25px;
+    border: 5px black solid;
 }

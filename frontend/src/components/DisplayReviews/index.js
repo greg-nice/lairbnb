@@ -1,7 +1,7 @@
 import React from 'react';
 import './DisplayReviews.css';
 
-function DisplayReviews({ reviews, sessionUser, setEditReviewId, setDeleteReviewId }) {
+function DisplayReviews({ reviews, sessionUser, setEditReviewId, setDeleteReviewId, setCreateReviewId }) {
 
     const handleReviewEditClick = (e) => {
         e.preventDefault();
@@ -15,13 +15,19 @@ function DisplayReviews({ reviews, sessionUser, setEditReviewId, setDeleteReview
         setDeleteReviewId(e.target.value);
     }
 
+    const handleCreateReviewClick = (e) => {
+        e.preventDefault();
+
+        setCreateReviewId(e.target.value);
+    }
+
 
     return (
-        <>
+        <div className="spot-reviews-wrapper">
             <div className="spot-detail-header-wrapper">
                 <div className="spot-detail-header">{reviews.length} {reviews.length === 1 ? "review" : "reviews"}</div>
                 <div>
-                    {sessionUser && <button className='create-lair-button'>Add Review</button>}
+                    {sessionUser && <button className='create-lair-button' value="true" onClick={handleCreateReviewClick}>Add Review</button>}
                 </div>
             </div>
             <div className='review-wrapper'>
@@ -48,7 +54,7 @@ function DisplayReviews({ reviews, sessionUser, setEditReviewId, setDeleteReview
                     )
                 })}
             </div>
-        </>
+        </div>
     )
 }
 

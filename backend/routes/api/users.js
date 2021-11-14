@@ -26,8 +26,10 @@ const validateSignup = [
         .exists({ checkFalsy: true })
         .isLength({ min: 6 })
         .withMessage('Password must be 6 characters or more.'),
-    check('url')
-        .isURL({ require_protocol: false, require_host: false }),
+    check("url")
+        .exists({ checkFalsy: true })
+        .isURL({ require_protocol: false, require_host: false })
+        .withMessage('Please provide a valid image url.'),
     handleValidationErrors,
 ];
 
