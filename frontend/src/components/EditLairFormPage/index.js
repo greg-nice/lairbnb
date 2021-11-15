@@ -186,8 +186,8 @@ function EditLairFormPage() {
                                 required
                             />
                         </div>
-                        <button>Submit</button>
-                        <button type="button" onClick={handleCancelClick}>Cancel</button>
+                        <button className="edit-lair-form-review-button">Submit</button>
+                        <button className="edit-lair-form-review-button" type="button" onClick={handleCancelClick}>Cancel</button>
                     </form>
                 </div>
             )}

@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReview } from '../../store/reviews';
 // import { getReviews } from '../../store/reviews';
+import './DeleteReviewForm.css';
 
 const DeleteReviewForm = ({ spot, reviewId, hideForm }) => {
     const review = useSelector(state => state.reviews[reviewId]);
@@ -25,14 +26,14 @@ const DeleteReviewForm = ({ spot, reviewId, hideForm }) => {
     }
 
     return (
-        <div className="delete-form-wrapper">
+        <div className="review-delete-form-wrapper">
             <h3>Delete Your Review</h3>
-            <div className="delete-form-body">
+            <div className="review-delete-form-body">
                 <p>Are you sure you want to delete this Review?</p>
                 {review && <br></br>}
                 {review && <div>{review.review}</div>}
-                <button onClick={handleCancelClick}>Cancel</button>
-                <button onClick={handleDeleteClick}>Delete</button>
+                <button className="delete-review-form-button" onClick={handleCancelClick}>Cancel</button>
+                <button className="delete-review-form-button" onClick={handleDeleteClick}>Delete</button>
             </div>
         </div>
     );

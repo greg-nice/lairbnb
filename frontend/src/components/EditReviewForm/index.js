@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviews, updateReview } from '../../store/reviews';
+import './EditReviewForm.css';
 
 const EditReviewForm = ({ spot, reviewId, hideForm }) => {
     const review = useSelector(state => state.reviews[reviewId]);
@@ -39,8 +40,8 @@ const EditReviewForm = ({ spot, reviewId, hideForm }) => {
                     onChange={e => setReviewContent(e.target.value)}
                 />
                 <br></br>
-                <button type="submit">Update Review</button>
-                <button type="button" onClick={handleCancelClick}>Cancel</button>
+                <button className="edit-review-form-button" type="submit">Update Review</button>
+                <button className="edit-review-form-button" type="button" onClick={handleCancelClick}>Cancel</button>
             </form>
         </section>
     );

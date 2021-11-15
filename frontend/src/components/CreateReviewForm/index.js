@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createReview, getReviews } from '../../store/reviews';
+import './CreateReviewForm.css';
 
 const CreateReviewForm = ({ spot, hideForm }) => {
     const dispatch = useDispatch();
@@ -40,8 +41,8 @@ const CreateReviewForm = ({ spot, hideForm }) => {
                     onChange={e => setReviewContent(e.target.value)}
                 />
                 <br></br>
-                <button type="submit">Add Review</button>
-                <button type="button" onClick={handleCancelClick}>Cancel</button>
+                <button className="create-review-form-button" type="submit">Add Review</button>
+                <button className="create-review-form-button" type="button" onClick={handleCancelClick}>Cancel</button>
             </form>
         </section>
     );

@@ -1,4 +1,4 @@
-.edit-review-form-button {
+.delete-review-form-button {
     border-color: #DDDDDD;
     border-radius: 21px;
     border-style: solid;
@@ -10,6 +10,10 @@
     margin-top: 1em;
 }
 
-.edit-review-form-button:hover {
+.delete-review-form-button:hover {
     background-color: rgb(218, 218, 218);
+}
+
+.review-delete-form-wrapper {
+    margin: 0px;
 }

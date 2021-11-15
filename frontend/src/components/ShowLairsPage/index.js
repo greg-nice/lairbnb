@@ -24,7 +24,7 @@ function ShowLairsPage() {
         <>
             <main className="spots-main">
                 <div className="heading-wrapper">
-                    <h1 className='spots-heading'>Stay in a Lair</h1>
+                    <h1 className='spots-heading'>Book a Stay...In a Lair</h1>
                     {sessionUser && <Link to="/spots/new"><button className='create-lair-button'>Create a Lair</button></Link>}
                 </div>
                 {isSpotsLoaded && spots.map(spot => {
