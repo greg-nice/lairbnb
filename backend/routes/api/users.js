@@ -26,6 +26,10 @@ const validateSignup = [
         .exists({ checkFalsy: true })
         .isLength({ min: 6 })
         .withMessage('Password must be 6 characters or more.'),
+    check("url")
+        .exists({ checkFalsy: true })
+        .isURL({ require_protocol: false, require_host: false })
+        .withMessage('Please provide a valid image url.'),
     handleValidationErrors,
 ];
 
@@ -33,8 +37,8 @@ router.post(
     '/',
     validateSignup,
     asyncHandler(async (req, res) => {
-        const { email, password, username } = req.body;
-        const user = await User.signup({ email, username, password });
+        const { email, password, username, url } = req.body;
+        const user = await User.signup({ email, username, password, url });
 
         await setTokenCookie(res, user);
 

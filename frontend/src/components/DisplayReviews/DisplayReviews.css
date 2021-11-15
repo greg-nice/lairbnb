@@ -1,0 +1,65 @@
+.spot-reviews-wrapper {
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 2em;
+}
+
+.review-wrapper {
+    display:flex;
+    margin-top: 2em;
+    flex-wrap: wrap;
+    margin-bottom: 1.5em;
+}
+
+.review-div {
+    box-sizing: border-box;
+    display: block;
+    margin-left: 0px;
+    padding-bottom: 2em;
+    padding-left: 8px;
+    padding-right: 16px;
+    position: relative;
+    width: 50%;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.profile-pic-and-name-date-group {
+    display: flex;
+}
+
+.profile-pic {
+    height: 50px;
+    width: 50px;
+    margin-right: 8px;
+    border-radius: 20%;
+}
+.reviewer-name {
+    font-weight: bold;
+}
+
+.review-date {
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(113, 113, 113)
+}
+
+.review-content {
+    line-height: 1.2rem;
+}
+
+.display-review-button {
+    border-color: #DDDDDD;
+    border-radius: 21px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 3px 6px 3px 6px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    box-sizing:border-box;
+}
+
+.display-review-button:hover {
+    background-color: rgb(218, 218, 218);
+}

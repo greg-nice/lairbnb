@@ -1,7 +1,9 @@
 .spots-main {
-    margin: 0 24px;
+    margin: 0 80px;
     min-height: 40rem;
     margin-bottom: 40px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .lair-div-wrapper {
@@ -16,7 +18,13 @@
 .lair-image {
     border-radius: 12px;
     width: 300px;
+    border: black solid 3px;
 }
+
+.lair-image:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+}
+
 
 .price-span {
     font-weight: bold;

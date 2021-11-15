@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
-const { Spot, User } = require('../../db/models');
+const { Review, Spot, User } = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
 
@@ -27,49 +27,41 @@ router.get("/:id", asyncHandler(async (req, res) => {
 
 //Create spot
 // router.post("/");
-//TODO: complete validation code below:
 const validateSpot = [
     check('address')
         .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage("Please provide a valid address"),
+        .notEmpty(),
     check('city')
         .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage("Please provide a valid city"),
+        .notEmpty(),
     check('state')
         .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage("Please provide a valid state"),
+        .notEmpty(),
     check('country')
         .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage("Please provide a valid country"),
+        .notEmpty(),
     check('lat')
         .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage("Please provide a valide latitude"),
+        .notEmpty(),
     check('lng')
         .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage("Please provide a valid longitude"),
+        .notEmpty(),
     check('name')
         .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage("Please provide a valid name"),
+        .notEmpty(),
     check('price')
         .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage("Please provide a valid price"),
+        .notEmpty(),
     check('url')
         .exists({ checkFalsy: true })
         .notEmpty()
-        .withMessage("Please provide a valid image url"),
+        .isURL({ require_protocol: false, require_host: false }),
     handleValidationErrors,
 ];
 
 router.post("/", requireAuth, validateSpot, asyncHandler(async (req, res) => {
-    const {userId,
+    const {
+        userId,
         address,
         city,
         state,
@@ -119,7 +111,8 @@ router.put("/:id", requireAuth, validateSpot, asyncHandler(async (req, res) => {
         lat,
         lng,
         name,
-        price
+        price,
+        url
     } = req.body;
 
     const updatedSpot = {
@@ -131,7 +124,8 @@ router.put("/:id", requireAuth, validateSpot, asyncHandler(async (req, res) => {
         lat,
         lng,
         name,
-        price
+        price,
+        url
     };
 
     const updated = await spot.update(updatedSpot);
@@ -144,6 +138,12 @@ router.put("/:id", requireAuth, validateSpot, asyncHandler(async (req, res) => {
 // router.delete("/:id", requireAuth, asyncHandler(async (req, res) => {
 router.delete("/:id", requireAuth, asyncHandler(async (req, res) => {
     const spotId = req.params.id;
+    const reviews = await Review.findAll({
+        where: {
+            spotId
+        }
+    })
+    reviews.forEach(review => review.destroy());
     const spot = await Spot.findByPk(spotId);
 
     // if (res.locals.user.id !== spot.userId) {
@@ -156,5 +156,45 @@ router.delete("/:id", requireAuth, asyncHandler(async (req, res) => {
     spot.destroy();
     return res.json({ message: `successfully deleted ${destroyedSpotName}` });
 }));
+
+router.get('/:id/reviews', asyncHandler(async function (req, res) {
+    const spotId = req.params.id;
+    const reviews = await Review.findAll({
+        where: {
+            spotId
+        },
+        include: User
+    });
+    return res.json(reviews);
+}));
+
+const validateReviewCreate = [
+    check("review")
+        .exists({ checkFalsy: true })
+        .notEmpty(),
+    handleValidationErrors
+]
+
+router.post(
+    '/:id/reviews',
+    requireAuth,
+    validateReviewCreate,
+    asyncHandler(async function (req, res) {
+        const spotId = req.params.id;
+        const {
+            userId,
+            review,
+        } = req.body;
+
+        const newReview = await Review.build({
+            spotId,
+            userId,
+            review,
+        });
+        await newReview.save();
+
+        return res.json(newReview);
+    })
+);
 
 module.exports = router;

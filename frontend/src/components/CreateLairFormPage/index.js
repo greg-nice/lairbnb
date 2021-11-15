@@ -26,8 +26,9 @@ function CreateLairFormPage() {
     const validate = () => {
         const errors = []
         if (price > 30000) errors.push("Price cannot exceed $30000");
-        if (name.length < 3) errors.push("Lair Name must be at least 3 characters in length)");
+        if (name.length < 3) errors.push("Lair Name must be at least 3 characters in length");
         if (lat > 180 || lat < -180) errors.push("Latitude must be between -180 and 180");
+        if (lng > 180 || lng < -180) errors.push("Longitude must be between -180 and 180");
         return errors;
     }
 
@@ -38,6 +39,7 @@ function CreateLairFormPage() {
         const errors = validate();
         setErrors(errors);
         if(errors.length > 0) return;
+        
         const formInfo = {
             userId: sessionUser.id,
             address,
@@ -151,7 +153,7 @@ function CreateLairFormPage() {
                         />
                     </div>
                     <div>
-                        <label>Image Url</label>
+                        <label className="form-label">Image Url</label>
                         <input
                             type="url"
                             value={url}
@@ -159,8 +161,8 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <button className="create-form-button">Submit Lair</button>
-                    <button className="create-form-button" type="button" onClick={handleCancelClick}>Cancel</button>
+                    <button className="lair-create-form-button">Submit Lair</button>
+                    <button className="lair-create-form-button" type="button" onClick={handleCancelClick}>Cancel</button>
                 </form>
             </div>
             <Footer />

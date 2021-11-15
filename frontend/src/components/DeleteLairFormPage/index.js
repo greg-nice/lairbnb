@@ -2,6 +2,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { removeSpot } from '../../store/spots'
+import Footer from '../Footer/index'
 import './DeleteLairFormPage.css'
 
 
@@ -22,14 +23,17 @@ function DeleteLairFormPage() {
     }
 
     return (
-        <div className="delete-form-wrapper">
-            <h1>Delete Lair</h1>
-            <div className="delete-form-body">
-                <p>Are you sure you want to delete this Lair?</p>
-                <button onClick={handleCancelClick}>Cancel</button>
-                <button onClick={handleDeleteClick}>Delete</button>
+        <>
+            <div className="delete-form-wrapper">
+                <h1>Delete Lair</h1>
+                <div className="delete-form-body">
+                    <p>Are you sure you want to delete this Lair?</p>
+                    <button className="lair-delete-form-button" onClick={handleCancelClick}>Cancel</button>
+                    <button className="lair-delete-form-button" onClick={handleDeleteClick}>Delete</button>
+                </div>
             </div>
-        </div>
+            <Footer />
+        </>
     );
 }
 
