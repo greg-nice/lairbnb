@@ -9,7 +9,7 @@ module.exports = {
         email: 'demo@user.io',
         username: 'DemoUser',
         hashedPassword: bcrypt.hashSync('password'),
-        url: "https://www.alaska.edu/_resources/images/placeholders/profile.png"
+        url: "https://cdn.vox-cdn.com/thumbor/JBJzwCXmTJs0NgnFtSPm_f5SMyw=/0x0:2000x1000/1200x800/filters:focal(654x138:974x458)/cdn.vox-cdn.com/uploads/chorus_image/image/59408999/Thanos_MCU.0.jpg"
       },
       {
         email: faker.internet.email(),

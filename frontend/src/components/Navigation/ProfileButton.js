@@ -23,8 +23,7 @@ function ProfileButton ({ user }) {
         else {
             return;
         }
-        // eslint-disable-next-line
-    }, [showMenu])
+    }, [showMenu]);
 
     return (
         <div className='nav-profile-button-container'>
