@@ -6,11 +6,22 @@ import './EditReviewForm.css';
 const EditReviewForm = ({ spot, reviewId, hideForm }) => {
     const review = useSelector(state => state.reviews[reviewId]);
     const dispatch = useDispatch();
-
     const [reviewContent, setReviewContent] = useState(review.review);
+    const [errors, setErrors] = useState([]);
     
+    const validate = () => {
+        const errors = []
+        if (reviewContent.length < 4) errors.push("Review must be at least 4 characters in length.");
+        return errors;
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        setErrors([]);
+        const errors = validate();
+        setErrors(errors);
+        if (errors.length > 0) return;
 
         const payload = {
             ...review,
@@ -34,6 +45,11 @@ const EditReviewForm = ({ spot, reviewId, hideForm }) => {
         <section>
             <form onSubmit={handleSubmit}>
                 <h3>Update Your Review</h3>
+                <div>
+                    <ul className="form-errors">
+                        {errors.map((error, i) => <li key={i}>{error}</li>)}
+                    </ul>
+                </div>
                 <textarea
                     placeholder="Your Review"
                     value={reviewContent}
