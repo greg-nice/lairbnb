@@ -172,6 +172,9 @@ const validateReviewCreate = [
     check("review")
         .exists({ checkFalsy: true })
         .notEmpty(),
+    check("userId")
+        .exists({ checkFalsy: true })
+        .notEmpty(),
     handleValidationErrors
 ]
 
