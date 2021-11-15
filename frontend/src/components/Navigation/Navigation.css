@@ -103,3 +103,18 @@ a {
 #logout-button:hover {
     background-color: rgb(218, 218, 218);
 }
+
+#demo-button {
+    border-color: #DDDDDD;
+    border-radius: 21px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 3px 6px 3px 6px;
+    cursor: pointer;
+    background-color: rgb(239, 239, 239);
+    box-sizing:border-box;
+}
+
+#demo-button:hover {
+    background-color: rgb(218, 218, 218);
+}

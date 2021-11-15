@@ -1,5 +1,5 @@
 .form-wrapper {
-    min-height: 40rem;
+    min-height: 45rem;
 }
 
 .form-style{
@@ -9,5 +9,21 @@
 }
 
 .form-button {
-    margin: 1rem;
+    margin-right: 8px;
+}
+
+.signup-form-button {
+    border-color: #DDDDDD;
+    border-radius: 21px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 3px 6px 3px 6px;
+    cursor: pointer;
+    background-color: white;
+    box-sizing:border-box;
+    margin-top: 1em;
+}
+
+.signup-form-button:hover {
+    background-color: rgb(218, 218, 218);
 }

@@ -32,7 +32,7 @@ function Navigation ({ isLoaded }) {
         sessionLinks = (
             <>
                 <div className='nav-auth-buttons'>
-                    <button onClick={handleClick}>Demo</button>
+                    <button id="demo-button" onClick={handleClick}>Demo</button>
                     <NavLink to="/login">Log In</NavLink>
                     <NavLink to="/signup">Sign Up</NavLink>
                 </div>

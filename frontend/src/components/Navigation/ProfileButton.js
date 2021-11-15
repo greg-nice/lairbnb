@@ -23,6 +23,7 @@ function ProfileButton ({ user }) {
         else {
             return;
         }
+        // eslint-disable-next-line
     }, [showMenu])
 
     return (

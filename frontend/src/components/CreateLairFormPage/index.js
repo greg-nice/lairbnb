@@ -153,7 +153,7 @@ function CreateLairFormPage() {
                         />
                     </div>
                     <div>
-                        <label>Image Url</label>
+                        <label className="form-label">Image Url</label>
                         <input
                             type="url"
                             value={url}
@@ -161,8 +161,8 @@ function CreateLairFormPage() {
                             required
                         />
                     </div>
-                    <button className="create-form-button">Submit Lair</button>
-                    <button className="create-form-button" type="button" onClick={handleCancelClick}>Cancel</button>
+                    <button className="lair-create-form-button">Submit Lair</button>
+                    <button className="lair-create-form-button" type="button" onClick={handleCancelClick}>Cancel</button>
                 </form>
             </div>
             <Footer />

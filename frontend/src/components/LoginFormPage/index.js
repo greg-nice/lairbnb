@@ -61,7 +61,7 @@ const LoginFormPage = () => {
                             required
                         />
                     </label>
-                    <button className="form-button">Log In</button>
+                    <button className="login-form-button">Log In</button>
                 </form>
             </div>
             <Footer />

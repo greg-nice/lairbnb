@@ -49,52 +49,62 @@ const SignupFormPage = () => {
                     <ul className='form-errors'>
                         {errors.map((error, i) => <li key={i}>{error}</li>)}
                     </ul>
-                    <label className="form-button">
+                    <div>
+                        <label className="form-button">
                         Username
+                        </label>
                         <input
                             type="text"
                             value={username}
                             onChange={e => setUsername(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className="form-button">
+                    </div>
+                    <div>
+                        <label className="form-button">
                         Email
+                        </label>
                         <input
                             type="email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className="form-button">
+                    </div>
+                    <div>
+                        <label className="form-button">
                         Password
+                        </label>
                         <input
                             type="password"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className="form-button">
+                    </div>
+                    <div>
+                        <label className="form-button">
                         Confirm Password
+                        </label>
                         <input
                             type="password"
                             value={confirmPassword}
                             onChange={e => setConfirmPassword(e.target.value)}
                             required
                         />
-                    </label>
+                    </div>
+                    <div>
                     <label className="form-button">
                         Image Url
+                        </label>
                         <input
                         type="url"
                         value={url}
                         onChange={e => setUrl(e.target.value)}
                         required
                         />
-                    </label>
-                    <button className="form-button">Sign Up</button>
+                    </div>
+                    <button className="signup-form-button">Sign Up</button>
                 </form>
             </div>
             <Footer />
