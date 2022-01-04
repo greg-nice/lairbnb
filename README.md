@@ -1,6 +1,6 @@
 # Summary
 
-Lairbnb is a single-page web application inspired by Airbnb built using Javascript utilizing React.js/Redux architecture with an Express backend. Lairbnb allows users to:
+Lairbnb is a single-page web application inspired by Airbnb built using JavaScript utilizing React.js/Redux architecture with an Express backend. Lairbnb allows users to:
 
 - Create an account
 - Log in / Log out
